@@ -1,17 +1,100 @@
-<script>
-  import "../app.css";
+<script lang="ts">
+  import "../app.postcss";
+
+  // Dropdown Menu Stuff
+  let mouseOnMenu = false;
+  let mouseOnDropdown = false;
+  let mouseOnMenuTimeout: NodeJS.Timeout = null;
+  let mouseOnDropdownTimeout: NodeJS.Timeout = null;
+  let forcedOpen = false;
+  const links = {
+    about: "About",
+  };
 </script>
 
-<div class="navbar h-10 px-6 bg-sky-200 flex flex-row align-bottom">
-  <a href="/" class="cursor-pointer text-2xl font-bold"> MIND Math </a>
-  <h4 class="text-gray-400">Math Is Not Difficult</h4>
-  <a href="/about">About</a>
-</div>
+<main
+  class="navbar bg-blue-200 w-full h-12 px-6 flex flex-row items-center justify-between relative"
+>
+  <div class="left flex flex-row gap-2 items-baseline">
+    <a class="ml-2 font-bold text-2xl" href="/"> MIND </a>
+    <h2 class="font-medium text-xl text-gray-600">Math Is Not Difficult</h2>
+  </div>
 
+  <!-- Navigation Menu, Unfold on big screen, Dropdown menu on small screen -->
+  <div class="nav-menu flex flex-row z-10">
+    {#each Object.entries(links) as [key, val]}
+      <a href={`/${key}`}>{val}</a>
+    {/each}
+    <p
+      class="dropdown-text inline sm:hidden"
+      on:mouseenter={() => {
+        mouseOnMenu = true;
+        clearTimeout(mouseOnMenuTimeout);
+      }}
+      on:mouseleave={() => {
+        mouseOnMenuTimeout = setTimeout(() => {
+          mouseOnMenu = false;
+          mouseOnMenuTimeout = null;
+        }, 750);
+      }}
+      on:click={() => {
+        forcedOpen = !forcedOpen;
+        if (!forcedOpen) {
+          mouseOnMenu = mouseOnDropdown = false;
+        }
+      }}
+    >
+      Menu
+    </p>
+  </div>
+
+  <div
+    class={`dropdown-menu absolute right-0 top-0 p-4 bg-white rounded ${
+      forcedOpen || mouseOnMenu || mouseOnDropdown
+        ? "translate-y-10"
+        : "opacity-0 pointer-events-none"
+    } transition-all flex flex-col hover:scale-102.5 sm:hidden`}
+    on:mouseenter={() => {
+      mouseOnDropdown = true;
+      clearTimeout(mouseOnDropdownTimeout);
+    }}
+    on:mouseleave={() => {
+      mouseOnDropdownTimeout = setTimeout(() => {
+        mouseOnDropdown = false;
+        mouseOnDropdownTimeout = null;
+      }, 750);
+    }}
+  >
+    {#each Object.entries(links) as [key, val]}
+      <a href={`/${key}`}>{val}</a>
+    {/each}
+  </div>
+</main>
+
+<!-- Website Content -->
 <slot />
 
 <style lang="postcss">
-  .navbar > * {
-    @apply my-auto;
+  * {
+    @apply select-none;
+  }
+
+  .left > a {
+    @apply hover:scale-102.5 transition-transform;
+  }
+
+  /* Text Stuff */
+  .nav-menu > a,
+  .dropdown-text {
+    @apply my-auto font-medium text-lg;
+  }
+
+  /* Dropdown Menu Stuff */
+  .nav-menu > a {
+    @apply hidden sm:inline;
+  }
+  .nav-menu > a,
+  .dropdown-text {
+    @apply mx-2 px-2 bg-gray-50 rounded hover:bg-gray-100 hover:scale-105 transition-all;
   }
 </style>

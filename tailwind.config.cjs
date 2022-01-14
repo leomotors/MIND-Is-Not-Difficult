@@ -1,7 +1,13 @@
 module.exports = {
-  content: ["./src/**/*.html", "./src/**/*.svelte"],
+  content: ["./src/**/*.{html,js,svelte,ts}"],
+
   theme: {
-    extend: {},
+    extend: {
+      scale: {
+        102.5: "1.025",
+      },
+    },
   },
+
   plugins: [],
 };
