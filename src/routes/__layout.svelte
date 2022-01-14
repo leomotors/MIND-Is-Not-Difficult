@@ -10,6 +10,8 @@
   const links = {
     about: "About",
   };
+
+  import { state } from "$lib/statetest";
 </script>
 
 <main
@@ -18,6 +20,7 @@
   <div class="left flex flex-row gap-2 items-baseline">
     <a class="ml-2 font-bold text-2xl" href="/"> MIND </a>
     <h2 class="font-medium text-xl text-gray-600">Math Is Not Difficult</h2>
+    Test Only, Remove this on Production: {state.state}
   </div>
 
   <!-- Navigation Menu, Unfold on big screen, Dropdown menu on small screen -->

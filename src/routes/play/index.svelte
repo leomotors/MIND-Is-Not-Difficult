@@ -1,40 +1,54 @@
 <script lang="ts">
-  import { Generator, MultiGenerator } from "polynomial-generator";
+  import { Gamemode } from "$lib/models/gamemode";
 
-  const generator1 = new Generator({
-    numeratorRange: 5,
-    denominatorRange: 3,
-    degree: 2,
-  });
-
-  const generator2 = new Generator({
-    numeratorRange: 5,
-    denominatorRange: 3,
-    degree: 3,
-  });
-
-  const generator = new MultiGenerator([
-    {
-      generator: generator1,
-      weight: 50,
+  const gameModes: { [mode: string]: Gamemode } = {
+    assessment: {
+      title: "Assessment Mode ✏️",
+      description:
+        "Take a fixed number of questions, and see how you do. Just like an assessment test.",
+      color: "pink",
     },
-    {
-      generator: generator2,
-      weight: 50,
+    endless: {
+      title: "Endless Mode 💪",
+      description:
+        "Take a questions until you answered incorrect. The longer it get, the harder the questions are.",
+      color: "lightsalmon",
     },
-  ]);
-
-  let [polynomial, roots] = generator.generate();
-
-  function regen() {
-    [polynomial, roots] = generator.generate();
-  }
+    timed: {
+      title: "Time Limit Mode ⌛",
+      description: "Take as many questions as possible in the limited time",
+      color: "skyblue",
+    },
+  };
 </script>
 
-<h1>I want to play a game</h1>
-<h2>Solve {@html polynomial.toString("html")} = 0</h2>
-<h4>Answers are</h4>
-{#each roots as root}
-  <p>{root.numerator} / {root.denominator}</p>
-{/each}
-<button on:click={regen} class="bg-red-200 select-none">Regen</button>
+<main class="page-content">
+  <h1 class="page-title p-4">Play</h1>
+  <h2 class="page-subtitle m-4">Select Game Mode</h2>
+
+  {#each Object.entries(gameModes) as [mode, info]}
+    <div class="mode-card" style={`background-color: ${info.color}`}>
+      <h1>{info.title}</h1>
+      <h2>{info.description}</h2>
+      <a href={`/play/${mode}`}> >> Play This Mode </a>
+    </div>
+  {/each}
+</main>
+
+<style lang="postcss">
+  .mode-card {
+    @apply mx-auto p-4 m-4 max-w-full md:w-2/5 rounded-2xl text-left;
+  }
+
+  .mode-card > h1 {
+    @apply font-bold text-3xl text-center;
+  }
+
+  .mode-card > h2 {
+    @apply font-medium text-2xl;
+  }
+
+  .mode-card > a {
+    @apply block hover:translate-x-5 transition-transform text-3xl font-bold select-none;
+  }
+</style>
