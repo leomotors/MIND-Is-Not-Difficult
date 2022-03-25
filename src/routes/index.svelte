@@ -8,7 +8,7 @@
   <Introduction />
 
   <button
-    class="bg-purple-400 rounded-3xl p-4 font-bold text-6xl hover:scale-105 transition-transform"
+    class="bg-purple-400 rounded-xl p-4 shadow-sm font-bold text-6xl hover:scale-105 transition-transform"
     on:click={() => {
       goto("/play");
     }}
