@@ -11,4 +11,4 @@ But I still want to make this a real thing, so here we are!
 
 _work in progress_
 
-fyi, here is our NSC Proposal [./docs]
+fyi, here is our [NSC Proposal](./docs)
