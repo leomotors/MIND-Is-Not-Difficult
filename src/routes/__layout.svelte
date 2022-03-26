@@ -72,9 +72,15 @@
 </main>
 
 <!-- Website Content -->
-<slot />
+<div class="site-content">
+  <slot />
+</div>
 
 <style lang="postcss">
+  .site-content {
+    min-height: calc(100vh - 3rem);
+  }
+
   * {
     @apply select-none;
   }
