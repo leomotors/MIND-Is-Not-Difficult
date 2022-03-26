@@ -23,7 +23,7 @@
   <!-- Navigation Menu, Unfold on big screen, Dropdown menu on small screen -->
   <div class="nav-menu flex flex-row z-10">
     {#each Object.entries(links) as [key, val]}
-      <a href={`/${key}`}>{val}</a>
+      <a href="/{key}">{val}</a>
     {/each}
     <p
       class="dropdown-text inline sm:hidden"
@@ -49,11 +49,11 @@
   </div>
 
   <div
-    class={`dropdown-menu absolute right-0 top-0 p-4 bg-white rounded ${
-      forcedOpen || mouseOnMenu || mouseOnDropdown
-        ? "translate-y-10"
-        : "opacity-0 pointer-events-none"
-    } transition-all flex flex-col hover:scale-102.5 sm:hidden`}
+    class="dropdown-menu absolute right-0 top-0 p-4 bg-white rounded {forcedOpen ||
+    mouseOnMenu ||
+    mouseOnDropdown
+      ? 'translate-y-10'
+      : 'opacity-0 pointer-events-none'} transition-all flex flex-col hover:scale-102.5 sm:hidden"
     on:mouseenter={() => {
       mouseOnDropdown = true;
       clearTimeout(mouseOnDropdownTimeout);
@@ -66,7 +66,7 @@
     }}
   >
     {#each Object.entries(links) as [key, val]}
-      <a href={`/${key}`}>{val}</a>
+      <a href="/{key}">{val}</a>
     {/each}
   </div>
 </main>

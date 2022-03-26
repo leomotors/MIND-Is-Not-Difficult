@@ -27,10 +27,10 @@
   <h2 class="page-subtitle m-4">Select Game Mode</h2>
 
   {#each Object.entries(gameModes) as [mode, info]}
-    <div class="mode-card" style={`background-color: ${info.color}`}>
+    <div class="mode-card" style="background-color: {info.color}">
       <h1>{info.title}</h1>
       <h2>{info.description}</h2>
-      <a href={`/play/${mode}`}> >> Play This Mode </a>
+      <a href="/play/{mode}"> >> Play This Mode </a>
     </div>
   {/each}
 </main>
