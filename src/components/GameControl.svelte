@@ -24,7 +24,7 @@
 </script>
 
 <main
-  class="bg-white rounded-lg shadow p-8 text-xl flex flex-col min-h-[calc(100vh-8rem)]"
+  class="bg-white dark:bg-slate-700 rounded-lg shadow p-8 text-xl flex flex-col min-h-[calc(100vh-12rem)]"
 >
   <header class="flex flex-row justify-between">
     <p>{topbar[0]}</p>
@@ -40,7 +40,7 @@
     </p>
     <input
       type="text"
-      class="w-2/3 bg-slate-200 rounded h-12 px-4"
+      class="w-2/3 bg-slate-200 dark:bg-slate-500 rounded h-12 px-4"
       bind:value={answer}
       on:keypress={handleKeyPress}
     />
@@ -62,7 +62,7 @@
     {/if}
 
     <button
-      class="bg-green-50 rounded shadow px-4 py-2 font-bold text-3xl"
+      class="bg-green-50 dark:bg-green-600 rounded shadow px-4 py-2 font-bold text-3xl"
       on:click={() => dispatch("submit")}
     >
       {submitText}
@@ -82,10 +82,10 @@
 
 <style lang="postcss">
   button.ctrl {
-    @apply bg-pink-50 rounded shadow px-4 text-4xl font-bold;
+    @apply bg-pink-50 gdark:bg-pink-600 rounded shadow px-4 text-4xl font-bold;
   }
 
   button {
-    @apply disabled:bg-slate-200;
+    @apply disabled:bg-slate-200 disabled:gdark:bg-slate-500;
   }
 </style>

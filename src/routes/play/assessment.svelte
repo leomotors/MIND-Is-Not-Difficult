@@ -36,6 +36,10 @@
     disabled={{ left: index == 0, right: index == problems.length - 1 }}
     on:left={() => (index = Math.max(0, index - 1))}
     on:right={() => (index = Math.min(problems.length - 1, index + 1))}
+    on:enter={() => {
+      if (index == problems.length - 1) goto("/play/result");
+      else index++;
+    }}
     on:submit={() => goto("/play/result")}
   />
 </main>

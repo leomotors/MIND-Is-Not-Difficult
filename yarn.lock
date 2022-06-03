@@ -54,6 +54,11 @@
   resolved "https://registry.yarnpkg.com/@leomotors/scripts/-/scripts-3.1.0.tgz#0c3c2fc824d5d0f01a3940724ddb0de1fc08eb0b"
   integrity sha512-zkT4bjETXxMlFXdzFAJ1r/hmMnupAYM8hkNBgimsyqhp9RZRdlLk3v1SgNNWYq/eSWJG9aWDWYH5IROxMSx5Tg==
 
+"@leomotors/sv-components@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@leomotors/sv-components/-/sv-components-0.2.0.tgz#a5e5432d96ce62bd10d18f306793e516382c96c7"
+  integrity sha512-Na1FBs/84/Ls6ZKFOXQYMHkgpTHrmLr57coFDlTXbA1XYJHXud1xEdZu21Z36gUFLFj0OS6vve+h9me0CeOSCQ==
+
 "@mapbox/node-pre-gyp@^1.0.5":
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/@mapbox/node-pre-gyp/-/node-pre-gyp-1.0.9.tgz#09a8781a3a036151cdebbe8719d6f8b25d4058bc"
@@ -147,9 +152,9 @@
   integrity sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==
 
 "@types/node@*":
-  version "17.0.38"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.38.tgz#f8bb07c371ccb1903f3752872c89f44006132947"
-  integrity sha512-5jY9RhV7c0Z4Jy09G+NIDTsCZ5G0L5n+Z+p+Y7t5VJHM30bgwzSjVtlcBxqAj+6L/swIlvtOSzr8rBk/aNyV2g==
+  version "17.0.39"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.39.tgz#3652d82e2a16b4ea679d5ea3143b816c91b7e113"
+  integrity sha512-JDU3YLlnPK3WDao6/DlXLOgSNpG13ct+CwIO17V8q0/9fWJyeMJJ/VyZ1lv8kDprihvZMydzVwf0tQOqGiY2Nw==
 
 "@types/pug@^2.0.4":
   version "2.0.6"
@@ -1756,10 +1761,10 @@ playwright-core@1.22.2:
   resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.22.2.tgz#ed2963d79d71c2a18d5a6fd25b60b9f0a344661a"
   integrity sha512-w/hc/Ld0RM4pmsNeE6aL/fPNWw8BWit2tg+TfqJ3+p59c6s3B6C8mXvXrIPmfQEobkcFDc+4KirNzOQ+uBSP1Q==
 
-polynomial-generator@^1.0.0-pre.2:
-  version "1.0.0-pre.2"
-  resolved "https://registry.yarnpkg.com/polynomial-generator/-/polynomial-generator-1.0.0-pre.2.tgz#96079994287fa398c0cbdaca2190303f1b759902"
-  integrity sha512-lcMH2dLe6OWIxxrGUQaU5jjMYjQzr1l64BCJx9RHFqA+K170T5Nqk0ZCHbQ28IZ5EY9iHjNPAPjpEk6rxXI8+g==
+polynomial-generator@^1.0.0-pre.3:
+  version "1.0.0-pre.3"
+  resolved "https://registry.yarnpkg.com/polynomial-generator/-/polynomial-generator-1.0.0-pre.3.tgz#fd977aae0f5fecc513f1dddbf2aed0a0bd1c2b62"
+  integrity sha512-MmBoidfoRuwxTv6bTYmaenk+ftAEd3VaFTZ09R0PAL8ezz5fcSi3jdD3FIEfZmWzagRMZ911KzMdaARfQxdnmQ==
 
 postcss-calc@^8.2.3:
   version "8.2.4"
@@ -2390,6 +2395,11 @@ svgo@^2.7.0:
     csso "^4.2.0"
     picocolors "^1.0.0"
     stable "^0.1.8"
+
+tailwindcss-global-dark@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/tailwindcss-global-dark/-/tailwindcss-global-dark-1.0.1.tgz#5071319f7e1a67bfb697a24329027f46208da93e"
+  integrity sha512-AeldGktCAOjdVnZI5Fm1anf/TQzzN03ER1UcRVfnfjDstMV32OJjR6MGB+CEkwavSzPBDWtgBCP/d8xO+fsGJQ==
 
 tailwindcss@^3.0.24:
   version "3.0.24"

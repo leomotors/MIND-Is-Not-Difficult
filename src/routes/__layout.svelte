@@ -1,100 +1,30 @@
 <script lang="ts">
   import "../app.css";
 
-  // Dropdown Menu Stuff
-  let mouseOnMenu = false;
-  let mouseOnDropdown = false;
-  let mouseOnMenuTimeout: NodeJS.Timeout = null;
-  let mouseOnDropdownTimeout: NodeJS.Timeout = null;
-  let forcedOpen = false;
-  const links = {
+  import { NavBar } from "@leomotors/sv-components";
+
+  const routes = {
+    "/": "Home",
     about: "About",
   };
+
+  let dark: boolean;
 </script>
 
-<main
-  class="navbar w-full h-16 px-6 flex flex-row items-center justify-between relative"
->
-  <div class="left flex flex-row gap-2 items-baseline">
-    <a class="ml-2 font-bold text-2xl" href="/"> MIND </a>
-    <h2 class="font-medium text-xl text-gray-600">Math Is Not Difficult</h2>
-  </div>
+<div class:dark>
+  <main class="dark:bg-slate-900 dark:text-white transition-all">
+    <NavBar {routes} useLightDark={true} bind:dark>
+      <div slot="left" class="flex flex-row gap-2 items-center">
+        <p class="text-2xl font-bold">MIND</p>
+        <p class="text-xl text-slate-400">MIND Is Not Difficult</p>
+      </div>
+    </NavBar>
 
-  <!-- Navigation Menu, Unfold on big screen, Dropdown menu on small screen -->
-  <div class="nav-menu flex flex-row z-10">
-    {#each Object.entries(links) as [key, val]}
-      <a href="/{key}">{val}</a>
-    {/each}
-    <p
-      class="dropdown-text inline sm:hidden"
-      on:mouseenter={() => {
-        mouseOnMenu = true;
-        clearTimeout(mouseOnMenuTimeout);
-      }}
-      on:mouseleave={() => {
-        mouseOnMenuTimeout = setTimeout(() => {
-          mouseOnMenu = false;
-          mouseOnMenuTimeout = null;
-        }, 750);
-      }}
-      on:click={() => {
-        forcedOpen = !forcedOpen;
-        if (!forcedOpen) {
-          mouseOnMenu = mouseOnDropdown = false;
-        }
-      }}
-    >
-      Menu
-    </p>
-  </div>
+    <hr class="mx-auto w-[90%]" />
 
-  <div
-    class="dropdown-menu absolute right-0 top-0 p-4 bg-white rounded {forcedOpen ||
-    mouseOnMenu ||
-    mouseOnDropdown
-      ? 'translate-y-10'
-      : 'opacity-0 pointer-events-none'} transition-all flex flex-col hover:scale-102.5 sm:hidden"
-    on:mouseenter={() => {
-      mouseOnDropdown = true;
-      clearTimeout(mouseOnDropdownTimeout);
-    }}
-    on:mouseleave={() => {
-      mouseOnDropdownTimeout = setTimeout(() => {
-        mouseOnDropdown = false;
-        mouseOnDropdownTimeout = null;
-      }, 750);
-    }}
-  >
-    {#each Object.entries(links) as [key, val]}
-      <a href="/{key}">{val}</a>
-    {/each}
-  </div>
-</main>
-
-<hr />
-
-<!-- Website Content -->
-<div class="min-h-[calc(100vh-4rem)]">
-  <slot />
+    <!-- Website Content -->
+    <div class="min-h-[calc(100vh-8rem-1px)]">
+      <slot />
+    </div>
+  </main>
 </div>
-
-<style lang="postcss">
-  .left > a {
-    @apply hover:scale-102.5 transition-transform;
-  }
-
-  /* Text Stuff */
-  .nav-menu > a,
-  .dropdown-text {
-    @apply my-auto font-medium text-lg;
-  }
-
-  /* Dropdown Menu Stuff */
-  .nav-menu > a {
-    @apply hidden sm:inline;
-  }
-  .nav-menu > a,
-  .dropdown-text {
-    @apply mx-2 px-2 bg-gray-50 rounded hover:bg-gray-100 hover:scale-105 transition-all;
-  }
-</style>

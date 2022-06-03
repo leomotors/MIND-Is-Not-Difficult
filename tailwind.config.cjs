@@ -1,5 +1,6 @@
 module.exports = {
   content: ["./src/**/*.{html,js,svelte,ts}"],
+  darkMode: "class",
 
   theme: {
     extend: {
@@ -9,5 +10,5 @@ module.exports = {
     },
   },
 
-  plugins: [],
+  plugins: [require("tailwindcss-global-dark")],
 };
