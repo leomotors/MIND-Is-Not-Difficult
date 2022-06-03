@@ -1,7 +1,7 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
 
-  import Introduction from "$lib/sections/Introduction.svelte";
+  import Introduction from "$sections/Introduction.svelte";
 </script>
 
 <main>

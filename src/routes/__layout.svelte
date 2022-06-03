@@ -13,7 +13,7 @@
 </script>
 
 <main
-  class="navbar bg-blue-200 w-full h-12 px-6 flex flex-row items-center justify-between relative"
+  class="navbar w-full h-16 px-6 flex flex-row items-center justify-between relative"
 >
   <div class="left flex flex-row gap-2 items-baseline">
     <a class="ml-2 font-bold text-2xl" href="/"> MIND </a>
@@ -71,20 +71,14 @@
   </div>
 </main>
 
+<hr />
+
 <!-- Website Content -->
-<div class="site-content">
+<div class="min-h-[calc(100vh-4rem)]">
   <slot />
 </div>
 
 <style lang="postcss">
-  .site-content {
-    min-height: calc(100vh - 3rem);
-  }
-
-  * {
-    @apply select-none;
-  }
-
   .left > a {
     @apply hover:scale-102.5 transition-transform;
   }

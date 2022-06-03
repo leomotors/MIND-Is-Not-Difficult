@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Gamemode } from "$lib/models/gamemode";
+  import type { Gamemode } from "$types/gamemode";
 
   const gameModes: { [mode: string]: Gamemode } = {
     assessment: {
