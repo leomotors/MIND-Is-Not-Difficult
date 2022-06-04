@@ -30,25 +30,25 @@
     <div class="mode-card" style="background-color: {info.color}">
       <h1>{info.title}</h1>
       <h2>{info.description}</h2>
-      <a href="/play/{mode}"> >> Play This Mode </a>
+      <a href="/play/{mode}/setup"> >> Play This Mode </a>
     </div>
   {/each}
 </main>
 
 <style lang="postcss">
   .mode-card {
-    @apply mx-auto p-4 m-4 max-w-full md:w-2/5 rounded-2xl text-left text-black;
+    @apply m-4 mx-auto max-w-full rounded-2xl p-4 text-left text-black md:w-2/5;
   }
 
   .mode-card > h1 {
-    @apply font-bold text-3xl text-center;
+    @apply text-center text-3xl font-bold;
   }
 
   .mode-card > h2 {
-    @apply font-medium text-2xl;
+    @apply text-2xl font-medium;
   }
 
   .mode-card > a {
-    @apply block hover:translate-x-5 transition-transform text-3xl font-bold select-none;
+    @apply block select-none text-3xl font-bold transition-transform hover:translate-x-5;
   }
 </style>

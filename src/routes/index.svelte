@@ -8,7 +8,7 @@
   <Introduction />
 
   <button
-    class="bg-gradient-to-br from-purple-300 to-purple-500 text-black rounded-xl p-4 shadow-sm font-bold text-6xl hover:scale-105 transition-transform"
+    class="rounded-xl bg-gradient-to-br from-purple-300 to-purple-500 p-4 text-6xl font-bold text-black shadow-sm transition-transform hover:scale-105"
     on:click={() => {
       goto("/play");
     }}

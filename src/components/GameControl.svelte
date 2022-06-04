@@ -24,7 +24,7 @@
 </script>
 
 <main
-  class="bg-white dark:bg-slate-700 rounded-lg shadow p-8 text-xl flex flex-col min-h-[calc(100vh-12rem)]"
+  class="flex min-h-[calc(100vh-12rem)] flex-col rounded-lg bg-white p-8 text-xl shadow dark:bg-slate-700"
 >
   <header class="flex flex-row justify-between">
     <p>{topbar[0]}</p>
@@ -34,13 +34,13 @@
 
   <hr class="my-5" />
 
-  <article class="flex flex-col items-center justify-evenly grow gap-4">
+  <article class="flex grow flex-col items-center justify-evenly gap-4">
     <p class="text-4xl xl:text-5xl">
       {@html problem}
     </p>
     <input
       type="text"
-      class="w-2/3 bg-slate-200 dark:bg-slate-500 rounded h-12 px-4"
+      class="h-12 w-2/3 rounded bg-slate-200 px-4 dark:bg-slate-500"
       bind:value={answer}
       on:keypress={handleKeyPress}
     />
@@ -49,7 +49,9 @@
   <hr class="my-5" />
 
   <footer
-    class="flex flex-row {navbuttons ? 'justify-between' : 'justify-center'}"
+    class="flex flex-row {navbuttons
+      ? 'justify-between'
+      : 'justify-center'} select-none"
   >
     {#if navbuttons}
       <button
@@ -62,7 +64,7 @@
     {/if}
 
     <button
-      class="bg-green-50 dark:bg-green-600 rounded shadow px-4 py-2 font-bold text-3xl"
+      class="rounded bg-green-50 px-4 py-2 text-3xl font-bold shadow dark:bg-green-600"
       on:click={() => dispatch("submit")}
     >
       {submitText}
@@ -82,7 +84,7 @@
 
 <style lang="postcss">
   button.ctrl {
-    @apply bg-pink-50 gdark:bg-pink-600 rounded shadow px-4 text-4xl font-bold;
+    @apply rounded bg-pink-50 px-4 text-4xl font-bold shadow gdark:bg-pink-600;
   }
 
   button {

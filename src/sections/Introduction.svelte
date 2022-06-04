@@ -1,5 +1,5 @@
 <main
-  class="bg-rose-300 p-4 m-4 rounded-lg shadow-md max-w-full mx-1 sm:mx-3 md:mx-8 lg:mx-24"
+  class="m-4 mx-1 max-w-full rounded-lg bg-rose-300 p-4 text-black shadow-md sm:mx-3 md:mx-8 lg:mx-24"
 >
   <h1 class="text-2xl font-bold">
     &gt; Factoring Polynomial is necessary skill &lt;
