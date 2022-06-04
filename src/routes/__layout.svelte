@@ -15,7 +15,7 @@
   <main class="dark:bg-slate-900 dark:text-white transition-all">
     <NavBar {routes} useLightDark={true} bind:dark>
       <div slot="left" class="flex flex-row gap-2 items-center">
-        <p class="text-2xl font-bold">MIND</p>
+        <a href="/" class="text-2xl font-bold">MIND</a>
         <p class="text-xl text-slate-400">MIND Is Not Difficult</p>
       </div>
     </NavBar>
