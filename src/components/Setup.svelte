@@ -18,10 +18,9 @@
   });
 </script>
 
-<main
-  class="flex min-h-[calc(100vh-12rem)] flex-col rounded-lg bg-white p-8 text-center text-xl shadow dark:bg-slate-700"
->
-  <h1 class="my-3 text-2xl font-bold">Polynomial Setup</h1>
+<main class="game-setup">
+  <h1>Game Setup</h1>
+  <h2>Polynomial Setup</h2>
 
   <div class="igroup">
     <label for="numrange">Numerator Range</label>
@@ -50,8 +49,10 @@
     {@html katex.renderToString("D = f_{num} * f_{denom} * f_{deg}")}
   </div>
 
+  <slot />
+
   <button
-    class="mx-auto rounded bg-gradient-to-br from-pink-100 to-pink-300 p-3 text-3xl font-bold text-black"
+    class="mx-auto my-4 rounded bg-gradient-to-br from-pink-100 to-pink-300 p-3 text-3xl font-bold text-black"
     on:click={() =>
       dispatch("play", {
         numeratorRange: numrange,
@@ -63,16 +64,8 @@
   </button>
 </main>
 
-<style lang="postcss">
-  label {
-    @apply w-1/3 text-left;
-  }
-
-  input {
-    @apply rounded p-1 text-black;
-  }
-
-  .igroup {
-    @apply my-2 flex flex-row justify-center gap-4;
+<style lang="scss">
+  .game-setup {
+    @apply flex min-h-[calc(100vh-12rem)] flex-col rounded-lg bg-white p-8 text-center text-xl shadow gdark:bg-slate-700;
   }
 </style>

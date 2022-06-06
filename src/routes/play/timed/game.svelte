@@ -1,24 +1,41 @@
+<script context="module" lang="ts">
+  import type { Load } from "@sveltejs/kit";
+
+  import { fromurl } from "$lib/fromurl";
+
+  export const load: Load = async ({ url }) => {
+    const { options, difficulty } = fromurl(url);
+
+    return {
+      props: {
+        options,
+        difficulty,
+        time: +url.searchParams.get("time"),
+      },
+    };
+  };
+</script>
+
 <script lang="ts">
   import GameControl from "$components/GameControl.svelte";
   import { goto } from "$app/navigation";
   import { Timer } from "$lib/timer";
 
-  import type { Polynomial, Root, GenerateOption } from "polynomial-generator";
+  import type { GenerateOption } from "polynomial-generator";
   import { generate } from "polynomial-generator";
   import { checkRoot } from "polynomial-generator/scoring";
   import { onMount } from "svelte";
+  import type { PolynomialPack } from "$types";
 
-  const options: GenerateOption = {
-    numeratorRange: 5,
-    denominatorRange: 1,
-    degree: 2,
-  };
+  export let options: GenerateOption;
 
-  export let problems: [Polynomial, Root[]] = generate(options);
+  export let problems: PolynomialPack = generate(options);
   let index = 0;
   let userAnswer = "";
+  export let difficulty: number;
+  export let time: number;
 
-  const timer = new Timer(90);
+  const timer = new Timer(time);
   let timeStr = timer.toString();
 
   function next() {
@@ -52,7 +69,11 @@
 
 <main class="container">
   <GameControl
-    topbar={["Difficulty 69", `${index} completed`, timeStr]}
+    topbar={[
+      `Difficulty ${difficulty.toFixed(4)}`,
+      `${index} completed`,
+      timeStr,
+    ]}
     problem="Solve {problems[0].toString('html')} = 0"
     bind:answer={userAnswer}
     navbuttons={false}

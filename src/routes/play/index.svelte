@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Gamemode } from "$types/gamemode";
+  import type { Gamemode } from "$types";
 
   const gameModes: { [mode: string]: Gamemode } = {
     assessment: {
@@ -30,7 +30,7 @@
     <div class="mode-card" style="background-color: {info.color}">
       <h1>{info.title}</h1>
       <h2>{info.description}</h2>
-      <a href="/play/{mode}/setup"> >> Play This Mode </a>
+      <a sveltekit:prefetch href="/play/{mode}/setup"> >> Play This Mode </a>
     </div>
   {/each}
 </main>

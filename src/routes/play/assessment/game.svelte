@@ -4,7 +4,6 @@
   import { fromurl } from "$lib/fromurl";
 
   import { generateMany } from "polynomial-generator";
-  import type { Polynomial, Root } from "polynomial-generator";
 
   export const load: Load = async ({ url }) => {
     const { options, difficulty } = fromurl(url);
@@ -24,8 +23,9 @@
   import GameControl from "$components/GameControl.svelte";
   import { goto } from "$app/navigation";
   import katex from "katex";
+  import type { PolynomialPack } from "$types";
 
-  export let problems: [Polynomial, Root[]][];
+  export let problems: PolynomialPack[];
   export let difficulty: number;
   let index = 0;
 

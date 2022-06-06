@@ -3,8 +3,6 @@
 
   import { fromurl } from "$lib/fromurl";
 
-  import type { Polynomial, Root } from "polynomial-generator";
-
   export const load: Load = async ({ url }) => {
     const { options } = fromurl(url);
 
@@ -23,13 +21,14 @@
   import { calculateDifficulty } from "$lib/difficulty";
   import { generate, type GenerateOption } from "polynomial-generator";
   import { checkRoot } from "polynomial-generator/scoring";
+  import type { PolynomialPack } from "$types";
 
   export let initialOptions: GenerateOption;
   let option = initialOptions;
   let difficulty = 0;
   $: difficulty = calculateDifficulty(option);
 
-  export let problems: [Polynomial, Root[]] = generate(option);
+  export let problems: PolynomialPack = generate(option);
 
   let index = 0;
   let userAnswer = "";

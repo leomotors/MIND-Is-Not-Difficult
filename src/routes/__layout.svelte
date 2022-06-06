@@ -1,5 +1,5 @@
 <script lang="ts">
-  import "../app.css";
+  import "../app.scss";
   import "katex/dist/katex.min.css";
 
   import { NavBar } from "@leomotors/sv-components";

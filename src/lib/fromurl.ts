@@ -9,12 +9,14 @@ export function fromurl(url: URL): {
   const dr = +url.searchParams.get("dr");
   const deg = +url.searchParams.get("deg");
 
+  const options = {
+    numeratorRange: nr,
+    denominatorRange: dr,
+    degree: deg,
+  };
+
   return {
-    options: {
-      numeratorRange: nr,
-      denominatorRange: dr,
-      degree: deg,
-    },
-    difficulty: calculateDifficulty(nr, dr, deg),
+    options,
+    difficulty: calculateDifficulty(options),
   };
 }

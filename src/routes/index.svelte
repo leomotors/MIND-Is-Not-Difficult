@@ -16,6 +16,3 @@
     Play
   </button>
 </main>
-
-<style lang="postcss">
-</style>
