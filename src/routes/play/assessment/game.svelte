@@ -30,6 +30,10 @@
   let index = 0;
 
   let userAnswer = {} as Record<number, string>;
+
+  function onSubmit() {
+    goto("/play/result");
+  }
 </script>
 
 <main class="container">
@@ -47,9 +51,9 @@
     on:left={() => (index = Math.max(0, index - 1))}
     on:right={() => (index = Math.min(problems.length - 1, index + 1))}
     on:enter={() => {
-      if (index == problems.length - 1) goto("/play/result");
+      if (index == problems.length - 1) onSubmit();
       else index++;
     }}
-    on:submit={() => goto("/play/result")}
+    on:submit={onSubmit}
   />
 </main>

@@ -5,10 +5,12 @@
 </script>
 
 <main>
+  <div class="h-8" />
   <Introduction />
+  <div class="h-8" />
 
   <button
-    class="rounded-xl bg-gradient-to-br from-purple-300 to-purple-500 p-4 text-6xl font-bold text-black shadow-sm transition-transform hover:scale-105"
+    class="bg-gradient-to-br from-purple-300 to-purple-500 text-black"
     on:click={() => {
       goto("/play");
     }}
@@ -16,3 +18,9 @@
     Play
   </button>
 </main>
+
+<style lang="scss">
+  button {
+    @apply rounded-xl p-4 text-5xl font-bold shadow transition-all hover:scale-105;
+  }
+</style>

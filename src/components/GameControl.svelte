@@ -7,15 +7,12 @@
     submit: null;
   }>();
 
-  export let topbar: Exclude<string[], 3>;
+  export let topbar: [string, string, string];
   export let problem: string;
   export let answer: string;
 
   export let navbuttons = true;
-  export let disabled: { left: boolean; right: boolean } = {
-    left: false,
-    right: false,
-  };
+  export let disabled = { left: false, right: false };
   export let submitText = "Submit Answer";
 
   function handleKeyPress(e: KeyboardEvent) {
@@ -24,7 +21,7 @@
 </script>
 
 <main
-  class="flex min-h-[calc(100vh-12rem)] flex-col rounded-lg bg-white p-8 text-xl shadow dark:bg-slate-700"
+  class="flex min-h-[calc(100vh-16rem-1px)] flex-col rounded-lg bg-white p-8 text-xl shadow dark:bg-slate-700"
 >
   <header class="flex flex-row justify-between">
     <p>{topbar[0]}</p>

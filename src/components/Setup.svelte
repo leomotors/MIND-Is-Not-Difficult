@@ -40,13 +40,13 @@
   <p>Difficulty: {difficulty.toFixed(4)}</p>
 
   <div class="flex flex-col items-start">
-    <p class="font-bold">Score Formula</p>
+    <p class="font-bold">Score & Difficulty Formula</p>
     {@html katex.renderToString("f_{num} = n^{\\frac{e}{3}}")}
     {@html katex.renderToString(
       "f_{denom} = min(10, max(2*d-1)) - 1 + (max(1, d-5))^{\\frac{e}{2}}"
     )}
     {@html katex.renderToString("f_{deg} = \\frac{deg!}{2}")}
-    {@html katex.renderToString("D = f_{num} * f_{denom} * f_{deg}")}
+    {@html katex.renderToString("D = f_{num} \\cdot f_{denom} \\cdot f_{deg}")}
   </div>
 
   <slot />
@@ -66,6 +66,6 @@
 
 <style lang="scss">
   .game-setup {
-    @apply flex min-h-[calc(100vh-12rem)] flex-col rounded-lg bg-white p-8 text-center text-xl shadow gdark:bg-slate-700;
+    @apply flex min-h-[calc(100vh-16rem-1px)] flex-col rounded-lg bg-white p-8 text-center text-xl shadow gdark:bg-slate-700;
   }
 </style>

@@ -1,18 +1,20 @@
-<main
-  class="m-4 mx-1 max-w-full rounded-lg bg-rose-300 p-4 text-black shadow-md sm:mx-3 md:mx-8 lg:mx-24"
->
-  <h1 class="text-2xl font-bold">
-    &gt; Factoring Polynomial is necessary skill &lt;
-  </h1>
-  <div class="supporting-paragraph">
-    brief: paragraph supporting above Lorem ipsum dolor sit amet consectetur
-    adipisicing elit. Vel commodi sint quaerat, corporis similique dolores
-    suscipit. Impedit laborum odio non.
-  </div>
+<main class="bg-pink-300 text-black">
+  <h1>Why factoring Polynomial is a neccessary skills</h1>
+
+  <ul class="list-disc px-4">
+    <li>
+      Because it is base for everything in Math. Being good at this will
+      significantly improves your overall proficient in Math.
+    </li>
+  </ul>
 </main>
 
-<style lang="postcss">
-  * {
-    @apply text-left;
+<style lang="scss">
+  main {
+    @apply mx-auto w-full rounded-lg p-4 text-left shadow-md md:w-2/3 lg:w-1/2;
+
+    & h1 {
+      @apply text-2xl font-bold;
+    }
   }
 </style>
