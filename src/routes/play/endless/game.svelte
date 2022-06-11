@@ -15,27 +15,47 @@
 </script>
 
 <script lang="ts">
+  import katex from "katex";
   import GameControl from "$components/GameControl.svelte";
   import { goto } from "$app/navigation";
 
   import { calculateDifficulty } from "$lib/difficulty";
   import { generate, type GenerateOption } from "polynomial-generator";
   import { checkRoot } from "polynomial-generator/scoring";
-  import type { PolynomialPack } from "$types";
+  import type { EndlessResult, PolynomialPack } from "$types";
 
   export let initialOptions: GenerateOption;
   let option = initialOptions;
   let difficulty = 0;
   $: difficulty = calculateDifficulty(option);
 
-  export let problems: PolynomialPack = generate(option);
+  export let problem: PolynomialPack = generate(option);
 
   let index = 0;
   let userAnswer = "";
   let score = 0;
 
+  let problems: PolynomialPack[] = [];
+  let userAnswers: string[] = [];
+
   function next() {
-    if (!checkRoot(problems[1], userAnswer)) {
+    problems.push(problem);
+    userAnswers.push(userAnswer);
+
+    if (!checkRoot(problem[1], userAnswer)) {
+      const result: EndlessResult = {
+        mode: "endless",
+        options: initialOptions,
+        difficulty: calculateDifficulty(initialOptions),
+        polynomials: problems,
+        user_answer: userAnswers,
+        correct: problems.length - 1,
+        score,
+        finalOption: option,
+        finalDifficulty: difficulty,
+      };
+      localStorage.setItem("result", JSON.stringify(result));
+
       goto("/play/result");
       return;
     }
@@ -49,7 +69,7 @@
       degree: option.degree,
     };
 
-    problems = generate(option);
+    problem = generate(option);
     index++;
     userAnswer = "";
   }
@@ -62,7 +82,9 @@
       `${index} completed`,
       `Score ${score.toFixed(2)}`,
     ]}
-    problem="Solve {problems[0].toString('html')} = 0"
+    problem="Solve {katex.renderToString(
+      `${problem[0].toString('latex')} = 0`
+    )}"
     bind:answer={userAnswer}
     navbuttons={false}
     on:enter={next}

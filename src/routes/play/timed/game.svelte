@@ -17,6 +17,7 @@
 </script>
 
 <script lang="ts">
+  import katex from "katex";
   import GameControl from "$components/GameControl.svelte";
   import { goto } from "$app/navigation";
   import { Timer } from "$lib/timer";
@@ -25,11 +26,11 @@
   import { generate } from "polynomial-generator";
   import { checkRoot } from "polynomial-generator/scoring";
   import { onMount } from "svelte";
-  import type { PolynomialPack } from "$types";
+  import type { PolynomialPack, TimedResult } from "$types";
 
   export let options: GenerateOption;
 
-  export let problems: PolynomialPack = generate(options);
+  export let problem: PolynomialPack = generate(options);
   let index = 0;
   let userAnswer = "";
   export let difficulty: number;
@@ -38,28 +39,50 @@
   const timer = new Timer(time);
   let timeStr = timer.toString();
 
+  let problems: PolynomialPack[] = [];
+  let userAnswers: string[] = [];
+
   function next() {
-    if (!checkRoot(problems[1], userAnswer)) {
+    problems.push(problem);
+    userAnswers.push(userAnswer);
+
+    if (!checkRoot(problem[1], userAnswer)) {
       timer.penalty += 5000;
       const tmp = timer.toString();
 
       if (!tmp) {
-        goto("/play/result");
+        endGame();
         return;
       } else timeStr = tmp;
 
       index--;
     }
 
-    problems = generate(options);
+    problem = generate(options);
     index++;
     userAnswer = "";
+  }
+
+  function endGame() {
+    const result: TimedResult = {
+      mode: "timed",
+      options,
+      difficulty,
+      polynomials: problems,
+      user_answer: userAnswers,
+      correct: problems.length - 1,
+      score: difficulty * (problems.length - 1),
+      missed: timer.penalty / 5000,
+    };
+    localStorage.setItem("result", JSON.stringify(result));
+
+    goto("/play/result");
   }
 
   onMount(() => {
     const interval = setInterval(() => {
       const tmp = timer.toString();
-      if (!tmp) goto("/play/result");
+      if (!tmp) endGame();
       else timeStr = tmp;
     }, 1000);
 
@@ -74,7 +97,9 @@
       `${index} completed`,
       timeStr,
     ]}
-    problem="Solve {problems[0].toString('html')} = 0"
+    problem="Solve {katex.renderToString(
+      `${problem[0].toString('latex')} = 0`
+    )}"
     bind:answer={userAnswer}
     navbuttons={false}
     on:enter={next}

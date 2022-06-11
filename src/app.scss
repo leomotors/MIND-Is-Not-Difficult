@@ -52,3 +52,7 @@ body {
     @apply rounded p-1 text-black;
   }
 }
+
+.katex {
+  @apply select-none;
+}

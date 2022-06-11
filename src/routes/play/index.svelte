@@ -11,12 +11,12 @@
     endless: {
       title: "Endless Mode 💪",
       description:
-        "Take a questions until you answered incorrect. The longer it get, the harder the questions are.",
+        "Take questions until you answered one incorrect. The longer it get, the harder the questions are.",
       color: "lightsalmon",
     },
     timed: {
       title: "Time Limit Mode ⌛",
-      description: "Take as many questions as possible in the limited time",
+      description: "Complete as many questions as possible in the limited time",
       color: "skyblue",
     },
   };

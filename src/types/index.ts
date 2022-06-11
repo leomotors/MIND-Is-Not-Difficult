@@ -10,7 +10,7 @@ export interface Gamemode {
 
 export interface ResultBase<T> {
   mode: T;
-  option: GenerateOption;
+  options: GenerateOption;
   difficulty: number;
   polynomials: PolynomialPack[];
   user_answer: string[];

@@ -80,11 +80,8 @@
 </main>
 
 <style lang="scss">
-  button {
-    &.ctrl {
-      @apply rounded bg-pink-50 px-4 text-4xl font-bold shadow gdark:bg-pink-600;
-    }
-
+  button.ctrl {
+    @apply rounded bg-pink-50 px-4 text-4xl font-bold shadow gdark:bg-pink-600;
     @apply disabled:bg-slate-200 disabled:gdark:bg-slate-500;
   }
 </style>
