@@ -11,7 +11,7 @@
 <div class:dark>
   <main class="transition-all dark:bg-slate-900 dark:text-white">
     <NavBar
-      routes={{ "/": "Home", about: "About" }}
+      routes={{ "/": "Home", "/about": "About" }}
       useLightDark={true}
       bind:dark
     >
