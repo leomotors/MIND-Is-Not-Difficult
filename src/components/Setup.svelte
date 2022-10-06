@@ -4,8 +4,6 @@
   import type { GenerateOption } from "polynomial-generator";
   const dispatch = createEventDispatcher<{ play: GenerateOption }>();
 
-  import katex from "katex";
-
   let numrange = 10;
   let denomrange = 1;
   let degree = 2;
@@ -36,23 +34,16 @@
     <label for="degree">Degree</label>
     <input type="number" name="degree" bind:value={degree} min="1" />
   </div>
-
-  <p>Difficulty: {difficulty.toFixed(4)}</p>
-
-  <div class="flex flex-col items-start">
-    <p class="font-bold">Score & Difficulty Formula</p>
-    {@html katex.renderToString("f_{num} = n^{\\frac{e}{3}}")}
-    {@html katex.renderToString(
-      "f_{denom} = min(10, max(2*d-1)) - 1 + (max(1, d-5))^{\\frac{e}{2}}"
-    )}
-    {@html katex.renderToString("f_{deg} = \\frac{deg!}{2}")}
-    {@html katex.renderToString("D = f_{num} \\cdot f_{denom} \\cdot f_{deg}")}
-  </div>
-
   <slot />
 
+  <p class="my-3">
+    <a class="underline" href="/difficulty"> Difficulty</a>: {difficulty.toFixed(
+      4
+    )}
+  </p>
+
   <button
-    class="mx-auto my-4 rounded bg-gradient-to-br from-pink-100 to-pink-300 p-3 text-3xl font-bold text-black"
+    class="mx-auto my-4 rounded bg-gradient-to-br from-pink-100 to-pink-300 py-2 px-4 text-3xl font-bold text-black"
     on:click={() =>
       dispatch("play", {
         numeratorRange: numrange,
@@ -67,5 +58,8 @@
 <style lang="scss">
   .game-setup {
     @apply flex min-h-[calc(100vh-16rem-1px)] flex-col rounded-lg bg-white p-8 text-center text-xl shadow gdark:bg-slate-700;
+  }
+  button {
+    @apply rounded-xl py-2 px-6 text-3xl font-bold shadow transition-all hover:scale-105;
   }
 </style>

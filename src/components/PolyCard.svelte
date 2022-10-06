@@ -21,8 +21,11 @@
   </p>
   <p>Your Answer: {userAnswer}</p>
   {#if !correct}
-    <p class="cursor-pointer" on:click={toggleAnswer}>
-      {showAnswer ? rootsToString(roots) : "Show Correct Answer"}
+    <p
+      class={`cursor-pointer ${!showAnswer && "underline"}`}
+      on:click={toggleAnswer}
+    >
+      {showAnswer ? rootsToString(roots) : "Show Answer"}
     </p>
   {/if}
 </div>

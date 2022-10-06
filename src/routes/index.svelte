@@ -21,6 +21,6 @@
 
 <style lang="scss">
   button {
-    @apply rounded-xl p-4 text-5xl font-bold shadow transition-all hover:scale-105;
+    @apply rounded-xl py-2 px-6 text-3xl font-bold shadow transition-all hover:scale-105;
   }
 </style>
