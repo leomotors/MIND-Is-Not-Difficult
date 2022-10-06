@@ -37,7 +37,7 @@
 
 <style lang="postcss">
   .mode-card {
-    @apply m-4 mx-auto max-w-full rounded-2xl p-4 text-left text-black md:w-2/5;
+    @apply m-4 mx-auto w-5/6 max-w-full rounded-2xl p-4 text-left text-black md:w-2/5;
   }
 
   .mode-card > h1 {
