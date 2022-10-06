@@ -1,10 +1,10 @@
 <main class="bg-pink-300 text-black">
-  <h1>Why factoring Polynomial is a neccessary skills</h1>
+  <h1>Why factoring Polynomial is a neccessary skill</h1>
 
   <ul class="list-disc px-4">
     <li>
-      Because it is base for everything in Math. Being good at this will
-      significantly improves your overall proficient in Math.
+      Because it is a base for everything in Math. Being good at this will
+      significantly improve your overall proficiency in Math.
     </li>
   </ul>
 </main>
