@@ -11,10 +11,10 @@
 
 <style lang="scss">
   main {
-    @apply mx-auto w-5/6 max-w-md rounded-lg p-4 text-left shadow-md md:w-2/3 lg:w-1/2;
+    @apply mx-auto w-5/6 max-w-lg rounded-lg p-4 text-left shadow-md md:w-2/3;
 
     & h1 {
-      @apply text-xl font-bold md:text-2xl;
+      @apply text-lg font-bold md:text-2xl;
     }
   }
 </style>
