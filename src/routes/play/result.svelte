@@ -10,50 +10,51 @@
   });
 </script>
 
-<main class="py-10">
-  <div
-    class="mx-auto w-1/2 rounded-xl bg-gradient-to-br from-sky-700 to-sky-900 py-10"
-  >
-    <h1 class="text-4xl font-bold">Summary</h1>
-    <hr class="mx-auto my-4 w-[90%]" />
+<main
+  class="mx-auto w-1/2 rounded-xl bg-gradient-to-br from-sky-700 to-sky-900 py-10"
+>
+  <h1 class="text-center text-4xl font-bold">Summary</h1>
+  <hr class="mx-auto my-4 w-[90%]" />
 
-    <section>
+  <section>
+    <div>
+      <p>Mode</p>
+      <p>{lastData.mode}</p>
+    </div>
+    <div>
+      <p>{lastData.mode == "endless" ? "Initial" : ""} Difficulty</p>
+      <p>{`${(+lastData.difficulty).toFixed(4)}`}</p>
+    </div>
+    {#if lastData.mode == "assessment"}
       <div>
-        <p>Mode</p>
-        <p>{lastData.mode}</p>
+        <p>Score</p>
+        <p>{lastData.correct}/{lastData.count}</p>
       </div>
+    {:else}
       <div>
-        <p>{lastData.mode == "endless" ? "Initial" : ""} Difficulty</p>
-        <p>{lastData.difficulty}</p>
+        <p>Score</p>
+        <p>{lastData.score}</p>
       </div>
-      {#if lastData.mode == "assessment"}
-        <div>
-          <p>Score</p>
-          <p>{lastData.correct}/{lastData.count}</p>
-        </div>
-      {:else}
-        <div>
-          <p>Score</p>
-          <p>{lastData.score}</p>
-        </div>
-      {/if}
+    {/if}
 
-      <p class="text-center text-3xl font-bold">Polynomial List</p>
+    <p class="text-center text-2xl font-bold">Polynomial List</p>
 
-      <PolynomialList
-        polynomials={lastData.polynomials}
-        userAnswers={lastData.user_answer}
-      />
-    </section>
-  </div>
+    <PolynomialList
+      polynomials={lastData.polynomials}
+      userAnswers={lastData.user_answer}
+    />
+  </section>
 </main>
 
 <style lang="scss">
   section {
-    @apply mx-auto flex w-3/4 flex-col items-center gap-2 text-xl font-medium;
+    @apply mx-auto flex w-5/6 flex-col items-center gap-2 text-xl font-medium;
 
     & > div {
       @apply flex w-full flex-row justify-between;
     }
+  }
+  main {
+    @apply mx-auto my-10 w-5/6 max-w-lg rounded-lg px-4 text-left shadow-md md:w-2/3;
   }
 </style>
